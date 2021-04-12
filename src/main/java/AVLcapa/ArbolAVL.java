@@ -174,8 +174,9 @@ public class ArbolAVL {
             
             //System.out.print(""+r.dato+", ");
             if(r.hijoIzquierdo!=null && r.hijoDerecho!=null ){
-                FORMATO_INORDEN+="Capa_"+r.dato+"->"+"Capa_"+r.hijoDerecho.dato+";\n";
                 FORMATO_INORDEN+="Capa_"+r.dato+"->"+"Capa_"+r.hijoIzquierdo.dato+";\n";
+                FORMATO_INORDEN+="Capa_"+r.dato+"->"+"Capa_"+r.hijoDerecho.dato+";\n";
+                
                 //System.out.println(r.hijoIzquierdo.dato+"->"+r.hijoDerecho.dato+";");
                 //System.out.println(r.dato+"->"+r.hijoIzquierdo.dato+";");
             }
@@ -195,8 +196,9 @@ public class ArbolAVL {
                 System.out.println(r.dato+"->"+r.hijoDerecho.dato+";");
                 //System.out.println(r.hijoIzquierdo.dato+"->"+r.hijoDerecho.dato+";");
                 //System.out.println(r.dato+"->"+r.hijoIzquierdo.dato+";");
-                FORMATO_PREORDEN+="Capa_"+r.dato+"->"+"Capa_"+r.hijoIzquierdo.dato+";\n";
                 FORMATO_PREORDEN+="Capa_"+r.dato+"->"+"Capa_"+r.hijoDerecho.dato+";\n";
+                FORMATO_PREORDEN+="Capa_"+r.dato+"->"+"Capa_"+r.hijoIzquierdo.dato+";\n";
+                
                 
             }
             
@@ -213,8 +215,9 @@ public class ArbolAVL {
             postOrden(r.hijoDerecho);
             
             if(r.hijoIzquierdo!=null && r.hijoDerecho!=null ){
-                FORMATO_POSTORDEN+="Capa_"+r.dato+"->"+"Capa_"+r.hijoDerecho.dato+";\n";
                 FORMATO_POSTORDEN+="Capa_"+r.dato+"->"+"Capa_"+r.hijoIzquierdo.dato+";\n";
+                FORMATO_POSTORDEN+="Capa_"+r.dato+"->"+"Capa_"+r.hijoDerecho.dato+";\n";
+                
 //                System.out.println(r.dato+"->"+r.hijoIzquierdo.dato+";");
 //                System.out.println(r.dato+"->"+r.hijoDerecho.dato+";");
                 //System.out.println(r.hijoIzquierdo.dato+"->"+r.hijoDerecho.dato+";");

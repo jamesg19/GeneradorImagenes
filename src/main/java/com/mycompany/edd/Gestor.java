@@ -14,12 +14,14 @@ import AnalizadoresUsuario.parserU;
 import Archivo.Archivos;
 import CircularDoble.CircularImagenTitle;
 import DatosEntrada.*;
+import MatrizDispersa.Matriz;
 import MatrizDispersa.SparseMatrix;
 import java.io.StringReader;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 
 /**
@@ -42,7 +44,6 @@ public class Gestor {
             this.a=a;
           try {
               
-
             StringReader entrada= new StringReader(codigo);
             LexerCup lex= new LexerCup(entrada);
             parser parse= new parser(lex);
@@ -150,46 +151,76 @@ public class Gestor {
             
             
         }
-        public void GenerarAvlCapa(){
+        public void GenerarAvlCapa(int selec){
             String formato="digraph G { \n node [shape= record fontsize=12 ] ";
+            //PreOrden
+            if(selec==2){
+                arbol.setFORMATO_PREORDEN("");
+                arbol.preOrden(arbol.obtenerRaiz());
+                formato+=arbol.getFORMATO_PREORDEN();
+                JOptionPane.showMessageDialog(null, "Se ha generado el AVL en PRE-ORDEN");
+            }
+            //PostOrden
+            else if(selec==1){
+                arbol.setFORMATO_POSTORDEN("");
+                arbol.postOrden(arbol.obtenerRaiz());
+                formato+=arbol.getFORMATO_POSTORDEN();
+                JOptionPane.showMessageDialog(null, "Se ha generado el AVL en POST-ORDEN");
             
-            arbol.preOrden(arbol.obtenerRaiz());
-            formato+=arbol.getFORMATO_PREORDEN();
+            }
+            //InOrden
+            else if(selec==3){
+                arbol.setFORMATO_INORDEN("");
+                arbol.inOrden(arbol.obtenerRaiz());
+                formato+=arbol.getFORMATO_INORDEN();
+                JOptionPane.showMessageDialog(null, "Se ha generado el AVL en IN-ORDEN");
+            
+            }
+            
             formato+="}";
-            
             Archivos ar= new Archivos();
             ar.GuardarArchivoDOT(formato,"ALVcapas.txt");
-            
-            ar.generar("ALVcapas.txt", "AVLcapas.png");
-            
-            
+            ar.generar("ALVcapas.txt", "AVLcapas.png");  
         }
         public void GraficarCapa(int idcapaa){
             
             for(int i=0;i<arrayObjetosC.length;i++){
                 if(arrayObjetosC[i]!=null){
                 if(arrayObjetosC[i].getIdCapa()==idcapaa){
-                    arrayObjetosC[i].mostrarLista();
+                    //arrayObjetosC[i].mostrarLista();
                     
                     int DimensionFila=Collections.max(arrayObjetosC[i].getFilaa());
                     int DimensionColumna=Collections.max(arrayObjetosC[i].getColumnaa());
-                    matriz_capa = new SparseMatrix(DimensionFila,DimensionColumna);
+                    matriz_capa = new SparseMatrix(DimensionColumna+2,DimensionFila+2);
                     //System.out.println("VALOR: "+DimensionColumna);
                     
-                    for(int j=0;j<arrayObjetosC.length;j++){
-                        //lenamos la matriz de la capa
-                        for(int k=0;k<arrayObjetosC[j].getColorr().size();k++){
-                        matriz_capa.setValor(arrayObjetosC[k].getColorr().get(j), arrayObjetosC[k].getFilaa().get(j), arrayObjetosC[k].getColumnaa().get(j));
-                    }
-                    }
-		
+                     System.out.println("Dimension  fila "+DimensionFila);
+                     System.out.println("Dimension  fila "+DimensionColumna);
                     
+                        //lenamos la matriz de la capa
+                        for(int k=0;k<arrayObjetosC[i].getColorr().size();k++){
+                            System.out.println(k);
+                            //arrayObjetosC[i].getColorr().get(k)
+                            //arrayObjetosC[i].getColumnaa().get(k)
+                            //arrayObjetosC[i].getFilaa().get(k)
+                            String colorrr=arrayObjetosC[i].getColorr().get(k);
+                            int f=arrayObjetosC[i].getFilaa().get(k);
+                            int c=arrayObjetosC[i].getColumnaa().get(k);
+                            System.out.println("Color: "+arrayObjetosC[i].getColorr().get(k));
+                            System.out.println("fila: "+arrayObjetosC[i].getFilaa().get(k));
+                            System.out.println("col: "+arrayObjetosC[i].getColumnaa().get(k));
+                        matriz_capa.setValor(colorrr, f,c);
+                       
+                        
+                            
+                        }
+                        matriz_capa.imprimirImagenJPG();
+                        String format=matriz_capa.getFORMATO();
+                        Archivos arc= new Archivos();
+                        arc.GuardarArchivoDOT(format, "capa.txt");
+                        arc.generar("capa.txt", "capa.png");
                 }
                 }
-                
-                
             }
-            
         }
-
 }

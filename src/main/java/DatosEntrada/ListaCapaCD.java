@@ -1,7 +1,6 @@
 package DatosEntrada;
 
 
-import CircularDoble.*;
 import java.util.ArrayList;
 
 /**
@@ -12,9 +11,9 @@ public class ListaCapaCD {
     nodoCapaCD primero;
     nodoCapaCD ultimo;
     int IdCapa;
-    int fila;
-    int columna;
-    String color;
+    int filas;
+    int columnas;
+    String colors;
     String FORMATO="";                                                                                                                                                                                                                                                          ArrayList<Integer> filaa = new ArrayList<Integer>();
 
     ArrayList<Integer> columnaa = new ArrayList<Integer>();
@@ -100,17 +99,18 @@ public class ListaCapaCD {
         actual=primero;
         do{
             
-            fila=actual.fila; 
-            filaa.add(fila);
-            columna=actual.columna;
-            columnaa.add(columna);
-            color=actual.color;
-            colorr.add(color);
+            filas=actual.fila; 
+            filaa.add(filas);
+            columnas=actual.columna;
+            columnaa.add(columnas);
+            colors=actual.color;
+            colorr.add(colors);
             System.out.println("Capa Id: "+IdCapa+" Linea: "+actual.fila+" Columna: "+actual.columna+" Color: "+actual.color);
             actual=actual.siguiente;
         }while(actual!= primero);
         
     }
+    
     public int getIdCapa() {
         return IdCapa;
     }
@@ -120,27 +120,27 @@ public class ListaCapaCD {
     }
 
     public int getFila() {
-        return fila;
+        return filas;
     }
 
     public void setFila(int fila) {
-        this.fila = fila;
+        this.filas = fila;
     }
 
     public int getColumna() {
-        return columna;
+        return columnas;
     }
 
     public void setColumna(int columna) {
-        this.columna = columna;
+        this.columnas = columna;
     }
 
     public String getColor() {
-        return color;
+        return colors;
     }
 
     public void setColor(String color) {
-        this.color = color;
+        this.colors = color;
     }
 
     public String getFORMATO() {

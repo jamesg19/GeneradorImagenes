@@ -25,59 +25,53 @@ public class test_driver {
 		int row;
 		int column;
 		char selection = main_menu();
-                
-                
-		while(selection != 'q'){
-			switch(selection){
-			case 'v': //agrega un valor a una matriz
-				which_matrix();
-				setvalue(matriz_seleccionada);
-				break;
-			case 'r': //muestra una fila determinada
-				which_matrix();
-				System.out.print("VALOR LINEA: ");
-				row = user_int();
-				matriz_seleccionada.imprimeValorLineas(row);
-				break;
-			case 'g': //muestra un valor en las coordenadas dadas
-				which_matrix();
-				System.out.print("VALOR LINEA:  ");
-				row = user_int();
-				System.out.print("VALOR COLUMNA: ");
-				column = user_int();
-				System.out.println(matriz_seleccionada.getValor(row, column));
-				break;
-			case 'c': //muestra una columna dada
-				which_matrix();
-				System.out.print("VALOR COLUMNA ");
-				column = user_int();
-				matriz_seleccionada.printColValues(column);
-				break;
-			case 's': //imprime una breve lista de valores en matriz
-				which_matrix();
-				matriz_seleccionada.printShort();
-				break;
-			case 'a': //suma dos matrices juntas, resultado de impresión largo
-				which_matrix();
-				SparseMatrix mat_one = matriz_seleccionada;
-				which_matrix();
-				mat_one.add(matriz_seleccionada).imprimirLargo();
-				break;
-			case 'l': //imprime una tabla de valores
-				which_matrix();
-				matriz_seleccionada.imprimirLargo();
-				break;
-			default: //se utiliza si el usuario realiza una selección no válida
-				System.out.println("This was an invalid selection.");
-				break;
-			}
-			selection = main_menu();
-		}
-                
-                
-                
-                
-                
+                prueba();
+//		while(selection != 'q'){
+//			switch(selection){
+//			case 'v': //agrega un valor a una matriz
+//				which_matrix();
+//				setvalue(matriz_seleccionada);
+//				break;
+//			case 'r': //muestra una fila determinada
+//				which_matrix();
+//				System.out.print("VALOR LINEA: ");
+//				row = user_int();
+//				matriz_seleccionada.imprimeValorLineas(row);
+//				break;
+//			case 'g': //muestra un valor en las coordenadas dadas
+//				which_matrix();
+//				System.out.print("VALOR LINEA:  ");
+//				row = user_int();
+//				System.out.print("VALOR COLUMNA: ");
+//				column = user_int();
+//				System.out.println(matriz_seleccionada.getValor(row, column));
+//				break;
+//			case 'c': //muestra una columna dada
+//				which_matrix();
+//				System.out.print("VALOR COLUMNA ");
+//				column = user_int();
+//				matriz_seleccionada.printColValues(column);
+//				break;
+//			case 's': //imprime una breve lista de valores en matriz
+//				which_matrix();
+//				matriz_seleccionada.printShort();
+//				break;
+//			case 'a': //suma dos matrices juntas, resultado de impresión largo
+//				which_matrix();
+//				SparseMatrix mat_one = matriz_seleccionada;
+//				which_matrix();
+//				mat_one.add(matriz_seleccionada).imprimirLargo();
+//				break;
+//			case 'l': //imprime una tabla de valores
+//				which_matrix();
+//				matriz_seleccionada.imprimirLargo();
+//				break;
+//			default: //se utiliza si el usuario realiza una selección no válida
+//				System.out.println("This was an invalid selection.");
+//				break;
+//			}
+//			selection = main_menu();
+//		}  
 	}
 	
 	//this method is called when input is needed form menu selection
@@ -170,4 +164,18 @@ public class test_driver {
 		int col = user_int();
 		SM.setValor(value, row, col);
 	}
+        public static void prueba(){
+            for(int a=0;a<5;a++){
+                
+            }
+        }
+        public void aa(SparseMatrix SMa){
+            System.out.println("VALOR: ");
+		String value = user_string();
+		System.out.println("LINEA: ");
+		int row = user_int();
+		System.out.println("COLUMNA: ");
+		int col = user_int();
+		SMa.setValor(value, row, col);
+        }
 }

@@ -5,6 +5,8 @@
  */
 package com.mycompany.edd;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -117,6 +119,8 @@ public class Menu extends javax.swing.JFrame {
         idCapa=Integer.parseInt(JOptionPane.showInputDialog("Ingrese el ID de la capa a graficar"));
         gst.GraficarCapa(idCapa);
         } catch(Exception e){
+            System.out.println(e);
+            Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, e);
             idCapa=Integer.parseInt(JOptionPane.showInputDialog("SOLO PUEDE INGRESAR NUMEROS\n"
                     + "Ingrese el ID de la imagen a graficar"));
         }
@@ -127,9 +131,36 @@ public class Menu extends javax.swing.JFrame {
     private void GeneraAVLcapaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GeneraAVLcapaActionPerformed
         // TODO add your handling code here:
         //gst.b();
-        gst.GenerarAvlCapa();
+        
+        graficar_capa();
+        
+        
+        
+        
+        
     }//GEN-LAST:event_GeneraAVLcapaActionPerformed
-
+    public void graficar_capa(){
+        int idCapa;
+        try{
+        
+        idCapa=Integer.parseInt(JOptionPane.showInputDialog("Ingrese por que metodo desea insertar datos para ALV Capa\n"
+                + "1) POST-ORDEN\n"
+                + "2) PRE-ORDEN\n"
+                + "3) IN-ORDEN"));
+        if(idCapa==1||idCapa==2||idCapa==3 ){
+            gst.GenerarAvlCapa(idCapa);
+        }else{
+            idCapa=Integer.parseInt(JOptionPane.showInputDialog("Ingrese un numero valido del 1-3\n"
+                    + "Ingrese por que metodo desea insertar datos para ALV Capa\n"
+                + "1) POST-ORDEN\n"
+                + "2) PRE-ORDEN\n"
+                + "3) IN-ORDEN"));
+        }
+        } catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Ingrese un numero valido");
+            graficar_capa();
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton GeneraAVLcapa;

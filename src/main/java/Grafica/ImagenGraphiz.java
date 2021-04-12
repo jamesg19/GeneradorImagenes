@@ -12,13 +12,12 @@ package Grafica;
  */
 public class ImagenGraphiz {
     String inicio="digraph G { \n" +
-"  subgraph cluster1 {fillcolor=\"white\" style=\"filled\"\n" +
+"  " +
 "		 \n" +
-"		a0 [label=<\n" +
+"		abc [shape=none,margin=0, label=<" +
 " <TABLE border=\"0\" cellspacing=\"0\" cellpadding=\"15\" style=\"rounded\" >";
-    String fin="</TABLE>>];\n" +
-"\n" +
-"}\n" +
+    String fin="</TABLE>>"
+            + "]\n" +
 "\n" +
 "} ";
 

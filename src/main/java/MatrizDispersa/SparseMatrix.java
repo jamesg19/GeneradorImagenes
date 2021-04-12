@@ -13,6 +13,7 @@ public class SparseMatrix {
 	private int NoColumna;
 	Node enter;
 	boolean empty_matrix;
+        String FORMATO="";
 
     //Constructor: the new matrix should have rowCount rows and colCount columns.
     public SparseMatrix(int NoFila, int NoColumna){
@@ -342,7 +343,7 @@ public class SparseMatrix {
 ////////                
 ////////               
 ////////    		System.out.println("");
-    	
+
     }
         public void imprimirImagenJPG(){
             
@@ -350,7 +351,7 @@ public class SparseMatrix {
         ImagenGraphiz imgG=new ImagenGraphiz();
    
 
-        String FORMATO="";
+        
         FORMATO+=imgG.getInicio();
         
     	for(int row=0; row<NoFila; row++ ){
@@ -360,6 +361,7 @@ public class SparseMatrix {
     			String val = getValor(row, col);
                         
     			if(val.equals("0")){
+                            
                         FORMATO+="<TD border=\"1\"  bgcolor=\"#FFFFFF\"> </TD>\n";    
     				System.out.print("   .   ");
     			}
@@ -376,8 +378,8 @@ public class SparseMatrix {
     	}
                 
                FORMATO+=imgG.getFin();
-               System.out.println("CODIGO james \n\n");
-               System.out.println(FORMATO);
+               //System.out.println("CODIGO james \n\n");
+               //System.out.println(FORMATO);
     		System.out.println("");
     	
     }
@@ -408,6 +410,14 @@ public class SparseMatrix {
     		}
     	}
     	return m;
+    }
+
+    public String getFORMATO() {
+        return FORMATO;
+    }
+
+    public void setFORMATO(String FORMATO) {
+        this.FORMATO = FORMATO;
     }
 
 }
